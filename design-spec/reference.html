@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Reference — Todo List (no JS here, just the look)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-bg: #F5F6FA;
+    --color-card: #FFFFFF;
+    --color-border: #E4E7EC;
+    --color-text: #1F2430;
+    --color-text-muted: #6B7280;
+    --color-accent: #6C5CE7;
+    --color-accent-hover: #5B4BD6;
+    --color-success: #22C55E;
+    --color-danger: #EF4444;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --radius-card: 12px;
+    --radius-input: 8px;
+    --radius-pill: 9999px;
+    --shadow-card: 0 4px 20px rgba(20, 20, 43, 0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--space-6) var(--space-4);
+    background: var(--color-bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-text);
+  }
+
+  .app-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-6);
+  }
+
+  .app-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .app-subtitle {
+    margin: var(--space-1) 0 var(--space-5);
+    color: var(--color-text-muted);
+    font-size: 14px;
+  }
+
+  .todo-form {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .todo-input {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .todo-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+  }
+
+  .add-btn {
+    padding: var(--space-3) var(--space-5);
+    border: none;
+    border-radius: var(--radius-input);
+    background: var(--color-accent);
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+
+  .add-btn:hover { background: var(--color-accent-hover); }
+  .add-btn:active { transform: scale(0.97); }
+  .add-btn:disabled {
+    background: var(--color-border);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .filter-tab {
+    padding: var(--space-2) var(--space-4);
+    border: none;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--color-text-muted);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .filter-tab:hover { background: var(--color-bg); }
+
+  .filter-tab.active {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .todo-list {
+    list-style: none;
+    margin: 0 0 var(--space-4);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .todo-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius-input);
+    transition: background 0.15s ease;
+  }
+
+  .todo-item:hover { background: var(--color-bg); }
+
+  .todo-check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--color-border);
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .todo-check.checked {
+    background: var(--color-success);
+    border-color: var(--color-success);
+  }
+
+  .todo-text {
+    flex: 1;
+    font-size: 14px;
+  }
+
+  .todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+  }
+
+  .todo-delete {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-input);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .todo-delete:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-danger);
+  }
+
+  .app-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  .clear-btn {
+    border: none;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .clear-btn:hover { color: var(--color-danger); }
+</style>
+</head>
+<body>
+<main class="app-card">
+  <header class="app-header">
+    <h1>My Tasks</h1>
+    <p class="app-subtitle">Stay on top of your day</p>
+  </header>
+
+  <form class="todo-form">
+    <input type="text" class="todo-input" placeholder="What do you need to do?">
+    <button type="submit" class="add-btn">Add</button>
+  </form>
+
+  <div class="filter-tabs">
+    <button class="filter-tab active">All</button>
+    <button class="filter-tab">Active</button>
+    <button class="filter-tab">Completed</button>
+  </div>
+
+  <ul class="todo-list">
+    <li class="todo-item">
+      <button class="todo-check" aria-label="Mark complete"></button>
+      <span class="todo-text">Buy milk and eggs</span>
+      <button class="todo-delete" aria-label="Delete task">✕</button>
+    </li>
+    <li class="todo-item">
+      <button class="todo-check" aria-label="Mark complete"></button>
+      <span class="todo-text">Finish the CSS lesson</span>
+      <button class="todo-delete" aria-label="Delete task">✕</button>
+    </li>
+    <li class="todo-item completed">
+      <button class="todo-check checked" aria-label="Mark incomplete">✓</button>
+      <span class="todo-text">Read the HTML lesson</span>
+      <button class="todo-delete" aria-label="Delete task">✕</button>
+    </li>
+  </ul>
+
+  <footer class="app-footer">
+    <span>2 items left</span>
+    <button class="clear-btn">Clear completed</button>
+  </footer>
+</main>
+</body>
+</html>
