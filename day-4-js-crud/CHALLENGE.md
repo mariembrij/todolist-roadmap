@@ -25,7 +25,9 @@ Build these functions (use these exact names — later days rely on them):
      `completed === false` / only `completed === true`).
   3. `.forEach()` over the filtered todos, building each `<li>` (same
      shape as Day 3, plus add `class="todo-item completed"` and
-     `class="todo-check checked"` when `todo.completed` is true).
+     `class="todo-check checked"`, and put a checkmark character (`✓`)
+     inside the `.todo-check` button, when `todo.completed` is true —
+     leave `.todo-check` empty when it's not completed).
   4. Update `#items-left` text to the count of NOT-completed todos (use
      the full `todos` array, not the filtered one).
   5. Show `#empty-state` (remove the `hidden` attribute) only when the

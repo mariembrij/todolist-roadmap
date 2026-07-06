@@ -29,6 +29,9 @@ and style everything to match `design-spec/reference.html` exactly.
      (including its hover color).
    - `.todo-item.completed .todo-text` — strikethrough + muted color.
    - `.app-footer` and `.clear-btn`.
+   - `#empty-state` — muted text color and some padding. To preview it,
+     temporarily remove the `hidden` attribute in your HTML, style it,
+     then add `hidden` back (JavaScript will control it starting Day 4).
    - A media query for screens narrower than 480px.
 
 **Tip:** you don't have JavaScript yet, so you can't click things to see

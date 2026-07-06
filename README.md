@@ -80,6 +80,11 @@ Each day has a folder, like `day-1-html/`. Inside:
   exactly what to build, with a checklist. It also tells you when to
   `git commit` and `git push` — do this every time it tells you to, even
   if the feature feels small. That's how you build the commit habit.
+  (Day 5 only has a `CHALLENGE.md` — no new lesson that day, just
+  polishing what you already built.)
+
+Day 3 and Day 4 also include a `practice.js` file — do those short
+exercises first, before the challenge, to warm up.
 
 All your actual app code lives in one place: the `project/` folder. It
 starts nearly empty, and you will keep adding to the same 3 files

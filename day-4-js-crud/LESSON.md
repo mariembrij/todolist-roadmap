@@ -85,6 +85,11 @@ list.addEventListener("click", (event) => {
 `event.target` is the exact element that was clicked. `.classList.contains(...)`
 checks if it has a certain class.
 
+Remember the `data-*` sticky notes from Day 1? JavaScript reads them back
+through `.dataset`. If an element has `data-id="3"` on it, you read that
+sticky note in JavaScript with `element.dataset.id`, which gives you back
+the text `"3"`.
+
 ## 5. State-array pattern — draw from the data, don't hand-edit the page
 
 Instead of hunting for one `<li>` on the page and editing it directly

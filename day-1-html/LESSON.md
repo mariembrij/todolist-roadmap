@@ -62,6 +62,15 @@ opening tag:
 - `class="add-btn"` — a label you can reuse on many elements, mainly used
   by CSS to style them the same way.
 - Other common attributes: `type`, `placeholder`, `href`, `src`.
+- **`data-*` attributes** — a sticky note you stick onto an element with
+  your own extra information, for JavaScript to read later. You can make
+  up any name after `data-`, like this:
+  ```html
+  <button class="filter-tab" data-filter="all">All</button>
+  ```
+  Here, `data-filter="all"` is a sticky note saying "this button is for
+  the 'all' filter." JavaScript can read that sticky note later with
+  `element.dataset.filter`.
 
 ## 5. Forms and inputs — like a form at the doctor's office
 

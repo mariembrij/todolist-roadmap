@@ -17,7 +17,6 @@ and compare them side by side.
 | Accent (hover) | `#5B4BD6` | Add button on hover |
 | Success | `#22C55E` | completed checkmark |
 | Danger | `#EF4444` | delete icon on hover |
-| Danger (hover) | `#DC2626` | delete icon, darker hover |
 
 ## Font
 
